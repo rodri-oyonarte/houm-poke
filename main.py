@@ -34,12 +34,11 @@ def raichu_egg():
     # junto todos en una lista
     for egg_group in egg_groups:
         aux.extend(get_pokemon_por_egg_group(egg_group))
-    print(len(aux))
 
     # elimino los duplicados
     pokemon_egg_group = list(set(aux))
 
-    return pokemon_egg_group
+    return len(pokemon_egg_group)
 
 
 # funcion para conocer el peso maximo y minimo de los pokemon de tipo fighting de primera generacion.
@@ -67,6 +66,3 @@ def cotas_peso_fighting():
 
     cota_peso = [peso_max, peso_min]
     return cota_peso
-
-
-print(cotas_peso_fighting())

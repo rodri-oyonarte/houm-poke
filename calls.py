@@ -71,6 +71,3 @@ def get_pokemon(url):
     pokemon = json.loads(request.text)
 
     return pokemon
-
-
-
