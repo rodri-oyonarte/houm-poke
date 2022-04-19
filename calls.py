@@ -1,7 +1,18 @@
+import json
+import requests
+
 
 # funcion para obtener todos los pokemon existentes
 def get_all_pokemon():
-    return 0
+    request = requests.get("https://pokeapi.co/api/v2/pokemon/?limit=1126")
+    text = json.loads(request.text)
+
+    poke_list = []
+
+    for pokemon in text['results']:
+        poke_list.append(pokemon['name'])
+
+    return poke_list
 
 
 # funcion para obtener los egg group de una especie
