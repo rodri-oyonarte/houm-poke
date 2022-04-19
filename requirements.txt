@@ -1,0 +1,8 @@
+el aplicativo esta desarrollado con Python 3.9
+librerias utilizadas:
+urllib, json, requests
+
+los metodos utilizados para las consignas son:
+1 get_pokemon_at
+2 raichu_egg
+3 cotas_peso_fighting
