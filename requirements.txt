@@ -1,6 +1,12 @@
 el aplicativo esta desarrollado con Python 3.9
-librerias utilizadas:
-urllib, json, requests
+
+
+imports necesarios:
+urllib, json, requests, calls
+
+
+archivo main.py es donde se encuentan las funciones para resolver los ejercicios
+archivo calls.py estan las llamadas a las API para obtener los datos necesarios
 
 los metodos utilizados para las consignas son:
 1 get_pokemon_at
