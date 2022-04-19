@@ -1,6 +1,11 @@
+from .calls import get_all_pokemon
+
 
 # funcion para obtener cuantos pokemon tiene at en su nombre y ademas tiene dos a. Retona un numero
 def get_pokemon_at():
+    # obtener todos los pokemon
+    pokemon = get_all_pokemon()
+
     pass
 
 
