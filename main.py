@@ -1,4 +1,5 @@
-from calls import get_all_pokemon, get_egg_group_especie, get_pokemon_por_egg_group
+from urllib import parse
+from calls import get_all_pokemon, get_egg_group_especie, get_pokemon_por_egg_group, get_pokemon_por_tipo, get_pokemon
 
 
 # funcion para obtener cuantos pokemon tiene at en su nombre y ademas tiene dos a. Retona un numero
@@ -26,7 +27,7 @@ def get_pokemon_at():
 # funcion para conocer con cuantas especies de pokemon puede procrear raichu. Retorna un numero
 def raichu_egg():
     especie_a_buscar = "raichu"
-    pokemon_egg_group = []
+    
     aux = []
     # obtener los egg_group
     egg_groups = get_egg_group_especie(especie_a_buscar)
@@ -44,7 +45,28 @@ def raichu_egg():
 # funcion para conocer el peso maximo y minimo de los pokemon de tipo fighting de primera generacion.
 # retorna lista [MAX,min]
 def cotas_peso_fighting():
-    pass
+    peso_max = 0
+    peso_min = 0
+
+    # obtengo todos los pokemon de tipo lucha
+    pokemon_lucha = get_pokemon_por_tipo(2)
+    for pokemon_raw in pokemon_lucha:
+
+        # obtengo la info de cada pokemon solo si el id esta entre 1 y 151
+        query = parse.urlsplit(pokemon_raw['pokemon']['url'])  # parseo la url para sacar el path
+        id_pokemon = int(query.path.split('/')[4])  # busco el id en el path
+
+        if id_pokemon <= 151:
+            pokemon = get_pokemon(pokemon_raw['pokemon']['url'])
+
+            # compruebo el peso minimo y maximo de cada pokemon para buscar el mayor
+            if peso_max < pokemon['weight']:
+                peso_max = (pokemon['weight'])
+            if peso_min == 0 or peso_min > pokemon['weight']:
+                peso_min = pokemon['weight']
+
+    cota_peso = [peso_max, peso_min]
+    return cota_peso
 
 
-print(raichu_egg())
+print(cotas_peso_fighting())
